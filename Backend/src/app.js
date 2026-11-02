@@ -20,6 +20,10 @@ app.use(
 // Stripe webhook ko raw body chahiye (signature check ke liye), is liye json parser se PEHLE
 app.use('/api/v1/payments/webhook', express.raw({ type: 'application/json' }));
 
+const { corsMiddleware } = require('./config/cors');
+
+app.use(corsMiddleware);
+
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 
