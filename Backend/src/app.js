@@ -1,6 +1,5 @@
 const express = require('express');
 const helmet = require('helmet');
-// const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
@@ -10,12 +9,7 @@ const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const app = express();
 
 app.use(helmet());
-app.use(
-  // cors({
-  //   origin: process.env.CLIENT_URL,
-  //   credentials: true,
-  // })
-);
+
 
 // Stripe webhook ko raw body chahiye (signature check ke liye), is liye json parser se PEHLE
 app.use('/api/v1/payments/webhook', express.raw({ type: 'application/json' }));
